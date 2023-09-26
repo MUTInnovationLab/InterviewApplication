@@ -1,0 +1,82 @@
+/* Custom styles to make the application more stylish */
+
+/* Header */
+.custom-toolbar {
+  background-color: #333; /* Header background color */
+  color: white; /* Header text color */
+}
+
+.custom-logo-button img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.custom-header-title {
+  font-size: 30px;
+}
+
+/* Centered Image */
+.custom-center-image {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Card */
+.custom-card {
+  background-color: rgba(255, 255, 255, 0.95); /* Card background color */
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Card shadow */
+}
+
+/* Form */
+.custom-form {
+  text-align: center;
+}
+
+.custom-label {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.custom-input {
+  background-color: #f4f4f4; /* Input background color */
+  border-radius: 10px;
+}
+
+.custom-input ion-input {
+  font-size: 16px;
+}
+
+.custom-button {
+  background-color: #ff5722; /* Custom button color */
+  color: white; /* Button text color */
+  font-weight: bold;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+/* Links */
+.custom-links {
+  margin-top: 15px;
+}
+
+.custom-link {
+  font-weight: bold;
+  color: #ff5722; /* Link text color */
+  cursor: pointer;
+}
+
+.custom-forgot-link {
+  margin-top: 10px;
+}
+
+/* Footer */
+.custom-footer {
+  text-align: center;
+  background-color: #333; /* Footer background color */
+  color: white; /* Footer text color */
+  padding: 10px;
+}
