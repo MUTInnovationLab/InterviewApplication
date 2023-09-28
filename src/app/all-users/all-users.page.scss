@@ -80,8 +80,11 @@ ion-menu-button:hover {
   .body tr:nth-child(odd) {
     background-color: #d3cdcd;
   }
-  ion-footer {
-    background-color: #300505;
-    color: #fcfcfc;
-    text-align: center;
-  }
+/* Footer */
+.custom-footer {
+  text-align: center;
+  background-color: #333; /* Footer background color */
+  color: white; /* Footer text color */
+  padding: 10px;
+}
+  

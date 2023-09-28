@@ -4,10 +4,12 @@
   width: 100%;
 }
 
-ion-footer {
-  background-color: #300505;
-  color: #fcfcfc;
+/* Footer */
+.custom-footer {
   text-align: center;
+  background-color: #333; /* Footer background color */
+  color: white; /* Footer text color */
+  padding: 10px;
 }
 
 /* Header styles */

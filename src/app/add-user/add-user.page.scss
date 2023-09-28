@@ -34,13 +34,13 @@ ion-menu-button:hover {
   transform: scale(1.1);
 }
 
-/* Footer Styles */
-ion-footer {
-  background-color: #300505;
-  color: #fcfcfc;
+
+/* Footer */
+.custom-footer {
   text-align: center;
-  padding: 10px 0;
-  animation: footerFadeIn 1s ease-in;
+  background-color: #333; /* Footer background color */
+  color: white; /* Footer text color */
+  padding: 10px;
 }
 
 /* Page Title Styles */

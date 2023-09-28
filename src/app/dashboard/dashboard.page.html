@@ -11,11 +11,12 @@
   </ion-toolbar>
 </ion-header>
 
+<div class="watermark-container">
 <ion-content class="ion-padding">
   <ion-grid class="ion-margin-top">
     <ion-row justify-content-center align-items-center>
       <ion-col size="12" size-md="4">
-        <ion-card class="dashboard-card animated" color="danger" (click)="goToAllApplicants()">
+        <ion-card class="dashboard-card animated custom-color-3" (click)="goToAllApplicants()">
           <ion-icon name="people"></ion-icon>
           <ion-card-content>
             <h2>Staff Dashboard</h2>
@@ -24,7 +25,7 @@
       </ion-col>
 
       <ion-col size="12" size-md="4">
-        <ion-card class="dashboard-card animated" color="danger" (click)="goToAllUsers()">
+        <ion-card class="dashboard-card animated custom-color-2" (click)="goToAllUsers()">
           <ion-icon name="people-circle"></ion-icon>
           <ion-card-content>
             <h2>All Users</h2>
@@ -32,7 +33,7 @@
         </ion-card>
       </ion-col>
       <ion-col size="12" size-md="4">
-        <ion-card class="dashboard-card animated" color="danger"  (click)=goToScores()>
+        <ion-card class="dashboard-card animated custom-color-1" (click)="goToScores()">
           <ion-icon name="document-text"></ion-icon>
           <ion-card-content>
             <h2>Score Capture</h2>
@@ -41,7 +42,7 @@
       </ion-col>
 
       <ion-col size="12" size-md="4">
-        <ion-card class="dashboard-card animated" color="danger"  (click)=goToScheduleInterview()>
+        <ion-card class="dashboard-card animated custom-color-1"  (click)="goToScheduleInterview()">
           <ion-icon name="add"></ion-icon>
           <ion-card-content>
             <h2>Schedule Interview</h2>
@@ -50,7 +51,7 @@
       </ion-col>
 
       <ion-col size="12" size-md="4">
-        <ion-card class="dashboard-card animated" color="danger">
+        <ion-card class="dashboard-card animated custom-color-3" (click)="goToGraded()">
           <ion-icon name="calendar"></ion-icon>
           <ion-card-content>
             <h2>Check Scheduled Interviews</h2>
@@ -65,7 +66,7 @@
       </ion-col>
 
       <ion-col size="12" size-md="4">
-        <ion-card class="dashboard-card animated" color="danger"  (click)=goToGraded()>
+        <ion-card class="dashboard-card animated custom-color-2"  (click)="goToGraded()">
           <ion-icon name="stats-chart"></ion-icon>
           <ion-card-content>
             <h2>Graded Interviews</h2>
@@ -74,16 +75,7 @@
       </ion-col>
 
       <ion-col size="12" size-md="4">
-        <ion-card class="dashboard-card animated" color="danger"  (click)=goToGraded()>
-          <ion-icon name="add"></ion-icon>
-          <ion-card-content>
-            <h2>Graded Interviews</h2>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-
-      <ion-col size="12" size-md="4">
-        <ion-card class="dashboard-card animated" color="danger"  (click)=goToAddUser()>
+        <ion-card class="dashboard-card animated custom-color-2"  (click)="goToAddUser()">
           <ion-icon name="person-add"></ion-icon>
           <ion-card-content>
             <h2>Add Users</h2>
@@ -92,22 +84,27 @@
       </ion-col>
 
       <ion-col size="12" size-md="4">
-        <ion-card class="dashboard-card animated" color="success"  (click)=goToInterviewHistory()>
+        <ion-card class="dashboard-card animated custom-color-1"  (click)="goToInterviewHistory()">
           <ion-icon name="timer"></ion-icon>
           <ion-card-content>
             <h2>Interviews History</h2>
           </ion-card-content>
         </ion-card>
       </ion-col>
+
+      <!-- Add more cards and customize their colors using custom CSS classes -->
+      
     </ion-row>
   </ion-grid>
 </ion-content>
 
-<ion-footer>
-  <ion-toolbar color="dark" class="ion-text-center">
-    Designed by <b>MUT INNOVATIONLAB</b>
-  </ion-toolbar>
+
+
+<ion-footer class="custom-footer">
+  Designed by @<b>MUT INNOVATIONLAB</b>
 </ion-footer>
+</div>
+
 
 <style>
   .dashboard-card {
@@ -144,5 +141,15 @@
       transform: translateY(0);
     }
   }
+
+  .watermark-container {
+    position: relative;
+    background-image: url('../assets/watermark.jpeg'); /* Replace with the path to your watermark image */
+    background-repeat: repeat; /* Adjust to your preference */
+    background-position: center center;
+    background-size: cover;
+    height: 100vh; /* Ensure the container covers the entire viewport */
+  }
+
 </style>
 

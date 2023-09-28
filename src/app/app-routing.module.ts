@@ -29,10 +29,7 @@ const routes: Routes = [
     path: 'score-capture',
     loadChildren: () => import('./score-capture/score-capture.module').then( m => m.ScoreCapturePageModule)
   },
-  {
-    path: 'hrlogin',
-    loadChildren: () => import('./hrlogin/hrlogin.module').then( m => m.HrloginPageModule)
-  },
+ 
   {
     path: 'apply',
     loadChildren: () => import('./applicant/apply/apply.module').then( m => m.ApplyPageModule)
@@ -112,7 +109,8 @@ const routes: Routes = [
   {
     path: 'today-interviews',
     loadChildren: () => import('./today-interviews/today-interviews.module').then( m => m.TodayInterviewsPageModule)
-  },  {
+  },
+  {
     path: 'marks',
     loadChildren: () => import('./marks/marks.module').then( m => m.MarksPageModule)
   },

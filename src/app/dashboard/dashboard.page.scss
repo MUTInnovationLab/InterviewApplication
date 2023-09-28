@@ -79,8 +79,34 @@ img{
   .ion-margin-top {
     margin-top: 20px;
   }
-  ion-footer {
-    background-color: #300505;
-    color: #fcfcfc;
-    text-align: center;
-  }
+
+ /* Footer */
+.custom-footer {
+  text-align: center;
+  background-color: #333; /* Footer background color */
+  color: white; /* Footer text color */
+  padding: 10px;
+}
+
+ion-card.dashboard-card {
+  --ion-background-color: #C9911A; /* Purple color */
+  color: #fff; /* Text color, change as needed */
+}
+
+/* Define custom card colors */
+.custom-color-1 {
+  background-color: #C9911A; /* Your custom color 1 */
+  color: white; /* Text color */
+}
+
+.custom-color-2 {
+  background-color: #065D78; /* Your custom color 2 */
+  color: white; /* Text color */
+}
+
+.custom-color-3 {
+  background-color: #892F29; /* Your custom color 2 */
+  color: white; /* Text color */
+}
+
+/* Add more custom-color classes as needed */
