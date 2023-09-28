@@ -112,7 +112,11 @@ const routes: Routes = [
   {
     path: 'today-interviews',
     loadChildren: () => import('./today-interviews/today-interviews.module').then( m => m.TodayInterviewsPageModule)
+  },  {
+    path: 'marks',
+    loadChildren: () => import('./marks/marks.module').then( m => m.MarksPageModule)
   },
+
 
 ];
 

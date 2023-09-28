@@ -1,26 +1,15 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start" (click)="goToHomePage()">
-      <img src="assets\MUT LOGO.png" class="logo-image">
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-menu-toggle>
+        <ion-button>
+          <ion-icon slot="icon-only" name="menu"></ion-icon>
+        </ion-button>
+      </ion-menu-toggle>
     </ion-buttons>
-    <ion-title class="centered-title">REGISTERED ADMIN USERS</ion-title>
-    <ion-buttons slot="end">
-      <ion-button>
-          <ion-button id="popover-button"><ion-icon name="person"></ion-icon></ion-button>
-       
-        <ion-popover trigger="popover-button" [dismissOnSelect]="true">
-          <ng-template>
-            <ion-content>
-              <ion-list>
-                <ion-item lines="none" [button]="true" [detail]="false" (click)="goToView()"><ion-icon name="eye"></ion-icon> &nbsp;  VIEW PROFILE</ion-item>
-                <ion-item lines="none" [button]="true" [detail]="false" (click)="goToAddUserPage()"><ion-icon name="arrow-back-outline"></ion-icon> &nbsp;  Back to Add User</ion-item>
-                <ion-item lines="none" [button]="true" [detail]="false"  (click)="presentConfirmationAlert()"><ion-icon color="danger" name="exit"></ion-icon>&nbsp;<p>LOGOUT</p></ion-item>
-              </ion-list>
-            </ion-content>
-          </ng-template>
-        </ion-popover>
-      </ion-button>
-    </ion-buttons>
+    <ion-title class="header-title">
+      All-Users
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -66,6 +55,10 @@
               </th>
               <th class="header-cell">
                 <ion-icon name="options-outline" size="small" class="small-icon"></ion-icon>
+                <div class="header-text small-text">Schedule Interview</div>
+              </th>
+              <th class="header-cell">
+                <ion-icon name="options-outline" size="small" class="small-icon"></ion-icon>
                 <div class="header-text small-text">Add User Role</div>
               </th>
               <th class="header-cell">
@@ -86,6 +79,7 @@
               <td class="ion-text-center white-text">{{ data.role.history }}</td>
               <td class="ion-text-center white-text">{{ data.role.addUser }}</td>
               <td class="ion-text-center white-text">{{ data.role.addUser }}</td>
+              <td class="ion-text-center white-text">{{ data.role.ScheduleInterview }}</td>
             </tr>
           </tbody>
         </table>

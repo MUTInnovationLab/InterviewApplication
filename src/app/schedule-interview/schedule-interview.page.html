@@ -1,64 +1,82 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
+<ion-header>
+  <ion-toolbar color="dark">
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-menu-toggle>
+        <ion-button>
+          <ion-icon slot="icon-only" name="menu"></ion-icon>
+        </ion-button>
+      </ion-menu-toggle>
     </ion-buttons>
-    <ion-toolbar>
-      <ion-img src="assets/img/mut_logoo.jpg"></ion-img>
-    </ion-toolbar>
-    <ion-title class="header-title"></ion-title>
+    <ion-title class="header-title">
+      Schedule Interview
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="content-container">
-<ion-card class="constant">
-  <h1 class="section-title"></h1>
-  <!-- <form action="https://formsubmit.co/thandekan736@gmail.com" method="POST"></form> -->
+  <ion-card class="constant">
+    <h1 class="section-title">Interview Schedule</h1>
 
-  <ion-item class="input-item">
-    <ion-icon name="person" slot="start"></ion-icon>
-    <ion-input
-    placeholder="Interviewee ID"
-    type="number"
-    [(ngModel)]="int_id"
-    pattern="[0-9]*"
-    maxlength="13"
-  ></ion-input>
-  
-  </ion-item>
+    <ion-item class="input-item">
+      <ion-icon name="person" slot="start"></ion-icon>
+      <ion-input
+        placeholder="Interviewee ID"
+        type="number"
+        [(ngModel)]="int_id"
+        pattern="[0-9]*"
+        maxlength="13"
+      ></ion-input>
+    </ion-item>
 
-  <ion-item class="input-item">
-    <ion-icon name="person" slot="start"></ion-icon>
-    <ion-input placeholder="First Name" type="text" [(ngModel)]="name" id="f_name"  required></ion-input>
-  </ion-item>
-  
-  <ion-item class="input-item">
-    <ion-icon name="person" slot="start"></ion-icon>
-    <ion-input placeholder="Last Name" type="text" [(ngModel)]="surname" id="l_name"  required></ion-input>
-  </ion-item>
-  
+    <ion-item class="input-item">
+      <ion-icon name="person" slot="start"></ion-icon>
+      <ion-input
+        placeholder="First Name"
+        type="text"
+        [(ngModel)]="name"
+        id="f_name"
+        required
+      ></ion-input>
+    </ion-item>
 
-  <ion-item class="input-item">
-    <ion-icon name="mail" slot="start"></ion-icon>
-    <ion-input placeholder="Email Address" type="email" [(ngModel)]="email" required="required" id="email"></ion-input>
-  </ion-item>
+    <ion-item class="input-item">
+      <ion-icon name="person" slot="start"></ion-icon>
+      <ion-input
+        placeholder="Last Name"
+        type="text"
+        [(ngModel)]="surname"
+        id="l_name"
+        required
+      ></ion-input>
+    </ion-item>
 
-  <ion-item class="input-item" fill="outline">
-    <ion-icon name="calendar" slot="start"></ion-icon>
-    <ion-datetime-button  datetime="birthDatee"></ion-datetime-button>
-    <ion-modal [keepContentsMounted]="true">
-      <ng-template>
-        <ion-datetime id="birthDatee" [(ngModel)]="date"></ion-datetime>
-      </ng-template>
-    </ion-modal>
-  </ion-item>
+    <ion-item class="input-item">
+      <ion-icon name="mail" slot="start"></ion-icon>
+      <ion-input
+        placeholder="Email Address"
+        type="email"
+        [(ngModel)]="email"
+        required="required"
+        id="email"
+      ></ion-input>
+    </ion-item>
 
-  
-  
-  <ion-button expand="full" color="danger" class="action-button" (click)="submit()">Schedule</ion-button>
-</ion-card>
+    <ion-item class="input-item" fill="outline">
+      <ion-icon name="calendar" slot="start"></ion-icon>
+      <ion-datetime-button datetime="birthDatee"></ion-datetime-button>
+      <ion-modal [keepContentsMounted]="true">
+        <ng-template>
+          <ion-datetime id="birthDatee" [(ngModel)]="date"></ion-datetime>
+        </ng-template>
+      </ion-modal>
+    </ion-item>
+
+    <ion-button expand="full" color="primary" class="action-button" (click)="submit()">
+      Schedule
+    </ion-button>
+  </ion-card>
 </ion-content>
-<ion-footer>
+
+<ion-footer class="footer">
   Designed by @<b>MUT INNOVATIONLAB</b>
 </ion-footer>
-

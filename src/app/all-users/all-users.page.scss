@@ -1,5 +1,31 @@
 
-  
+  /* Header Styles */
+ion-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: maroon;
+  color: white;
+  height: 70px;
+  animation: headerFadeIn 1s ease-in;
+}
+
+.header-title {
+  margin: 0;
+  text-align: center;
+  font-weight: bold;
+  animation: textFadeIn 1.5s ease-in-out;
+}
+
+/* Menu Button Styles */
+ion-menu-button {
+  color: white;
+  transition: transform 0.3s ease-in-out;
+}
+
+ion-menu-button:hover {
+  transform: scale(1.1);
+}
   .white-text {
     color: rgb(19, 16, 16); /* Sets the text color to white */
   }

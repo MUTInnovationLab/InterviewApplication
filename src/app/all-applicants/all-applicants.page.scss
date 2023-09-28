@@ -1,5 +1,5 @@
- /*TABLE STYLE*/
- .bordered {
+/* TABLE STYLE */
+.bordered {
   border-collapse: collapse;
   width: 100%;
 }
@@ -16,7 +16,6 @@ ion-footer {
   color: white;
   font-weight: bold;
 }
-
 
 /* Row styles */
 .body tr:nth-child(even) {
@@ -49,7 +48,6 @@ ion-footer {
   margin-top: 10px;
 }
 
-
 .horizontal-button {
   display: inline-block;
   width: 60px;
@@ -61,26 +59,22 @@ ion-footer {
 
 .horizontal-button.approve-button {
   --background: green;
-  --color: green;
+  --color: white; /* Set the text color to white for contrast */
 }
 
 .horizontal-button.decline-button {
   --background: red;
-  --color: red;
+  --color: white; /* Set the text color to white for contrast */
 }
+
+/* Tooltip styles */
 .tooltip {
   position: relative;
   display: inline-block;
-}
-.tooltip {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  cursor: pointer; /* Add a pointer cursor for interaction */
 }
 
-/* Tooltip text */
 .tooltip .tooltiptext {
-  
   visibility: hidden;
   width: 200px;
   background-color: #000;
@@ -95,49 +89,20 @@ ion-footer {
   margin-left: -100px;
   opacity: 0;
   transition: opacity 0.3s;
-  
 }
 
-ion-content {
-  --background:#ECF0F6;
-}
-
-
-/* Tooltip arrow */
-.tooltip .tooltiptext::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: #000000 transparent transparent transparent;
-}
-/* Show the tooltip text when hovering over the container */
 .tooltip:hover .tooltiptext {
   visibility: visible;
   opacity: 1;
 }
 
+/* Update ion-content background */
+ion-content {
+  --background: #ECF0F6;
+}
 
+/* Pagination styles */
 .pagination {
-  display: flex;
-  justify-content: center;
-}
-
-.centered-buttons {
-  display: flex;
-  justify-content: center;
-}
-
-
-.pagination {
-  display: flex;
-  justify-content: center;
-}
-
-.centered-buttons {
   display: flex;
   justify-content: center;
 }
@@ -162,23 +127,21 @@ ion-content {
   cursor: not-allowed;
 }
 
-
-//menu
-img{
+/* Menu styles */
+img {
   width: 100px;
   height: 60px;
 }
+
 ion-header {
   display: flex;
   justify-content: center;
   align-items: center;
-  
 }
 
 #popover-button {
   color: black;
 }
-
 
 .header-title {
   margin: 0 auto;
@@ -188,20 +151,18 @@ ion-header {
 }
 
 .menu {
- color: #000000;
- font-family:Arial;
- height: 50px; /* Set the desired height value */
- cursor:pointer;
-}
-ion-menu-button {
- color: black;
- cursor: pointer;
-}
-img {
-width: 100px; /* Adjust the desired width */
-height: 60px; /* Adjust the desired height */
+  color: #000000;
+  font-family: Arial;
+  height: 50px; /* Set the desired height value */
+  cursor: pointer;
 }
 
-ion-toolbar{
-  --background:white
+ion-menu-button {
+  color: black;
+  cursor: pointer;
+}
+
+/* Update ion-toolbar background */
+ion-toolbar {
+  --background: #ffffff; /* White background */
 }

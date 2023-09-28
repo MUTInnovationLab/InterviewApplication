@@ -1,70 +1,68 @@
-ion-content.content-container {
-  --background: #f8f8f8;
+
+/* Header Styles */
+ion-header {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  padding: 20px;
+  align-items: center;
+  background-color: maroon;
+  color: white;
+  height: 70px;
+  animation: headerFadeIn 1s ease-in;
 }
 
 .header-title {
-  font-size: 24px;
+  margin: 0;
+  text-align: center;
   font-weight: bold;
-  color: #333;
-  margin-bottom: 20px;
+  animation: textFadeIn 1.5s ease-in-out;
 }
 
-.section-title {
-  font-size: 20px;
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 10px;
+/* Menu Button Styles */
+ion-menu-button {
+  color: white;
+  transition: transform 0.3s ease-in-out;
 }
 
-.input-item {
-  --padding-start: 10px;
-  --padding-end: 10px;
-  margin-bottom: 12px;
-  border-radius: 8px;
-  background-color: #ffffff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+ion-menu-button:hover {
+  transform: scale(1.1);
 }
 
-ion-input,
-ion-datetime {
-  padding: 10px;
-  font-size: 16px;
-  border: none;
-  background-color: #f2f2f2;
-  border-radius: 8px;
-}
-
-ion-datetime {
-  --min-width: 80%;
-}
-
-.action-button {
-  --border-radius: 8px;
-  font-weight: bold;
-  text-transform: uppercase;
-  margin-top: 20px;
-}
-
-ion-button[color="danger"] {
-  --background: #ff6347;
-}
-
-ion-button[color="dark"] {
-  --background: #2c3e50;
-}
-
+/* Footer Styles */
 ion-footer {
   background-color: #300505;
   color: #fcfcfc;
   text-align: center;
+  padding: 10px 0;
+  animation: footerFadeIn 1s ease-in;
 }
-.constant{
-  position: fixed;
-  width: 90%;
 
+ion-img.logo {
+  max-width: 100px; /* Adjust the logo size as needed */
+}
+
+/* Styling for the content */
+ion-card.constant {
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+h1.section-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333; /* Adjust the color as needed */
+}
+
+ion-item.input-item {
+  margin-bottom: 10px;
+}
+
+ion-button.action-button {
+  margin-top: 20px;
+}
+
+
+
+b {
+  font-weight: bold;
 }

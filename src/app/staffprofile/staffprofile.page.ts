@@ -34,17 +34,17 @@ export class StaffprofilePage implements OnInit {
     upcomingInterviews: 'off'
   };
 
-  tableData: any[]=[];
+  tableData: any[] = [];
 
-  userData:any;
+  userData: any;
   currentPage: number = 1;
   rowsPerPage: number = 10;
-  recipient:any;
+  recipient: any;
   userEmailArray: string[] = [];
-  userDocument:any;
+  userDocument: any;
   navController: any;
 
-  
+
 
   constructor(
     private loadingController: LoadingController,
@@ -93,7 +93,7 @@ export class StaffprofilePage implements OnInit {
       });
   }
 
-     
+
 
   ngOnInit() {
   }
@@ -105,14 +105,14 @@ export class StaffprofilePage implements OnInit {
   }
 
 
-  
+
   goToMenuPage() {
     //this.navController.navigateForward('/menu');
 
     this.router.navigateByUrl("/menu");
 
   }
-  
+
   async presentConfirmationAlert() {
     const alert = await this.alertController.create({
       header: 'Confirmation',
@@ -140,17 +140,17 @@ export class StaffprofilePage implements OnInit {
     });
     await alert.present();
   }
-  
+
   async presentToast() {
     const toast = await this.toastController.create({
       message: 'SIGNED OUT!',
       duration: 1500,
       position: 'top',
     });
-  
+
     await toast.present();
   }
-  
+
   goToHomePage(): void {
     this.router.navigateByUrl('/home');
   }
@@ -158,6 +158,6 @@ export class StaffprofilePage implements OnInit {
   navigateBack(): void {
     this.navController.back();
   }
-  
+
 
 }

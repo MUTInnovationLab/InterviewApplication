@@ -2,6 +2,33 @@
 
 /* src/app/home/home.page.scss */
 
+/* Header Styles */
+ion-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: maroon;
+  color: white;
+  height: 70px;
+  animation: headerFadeIn 1s ease-in;
+}
+
+.header-title {
+  margin: 0;
+  text-align: center;
+  font-weight: bold;
+  animation: textFadeIn 1.5s ease-in-out;
+}
+
+/* Menu Button Styles */
+ion-menu-button {
+  color: white;
+  transition: transform 0.3s ease-in-out;
+}
+
+ion-menu-button:hover {
+  transform: scale(1.1);
+}
 .container {
   display: flex;
   flex-direction: column;
@@ -9,7 +36,7 @@
   justify-content: center;
   height: 100vh;
   text-align: center;
-  background-color: #1e1e1e;
+  background-color: #56221F;
 }
 
 .image-container {
@@ -29,7 +56,7 @@
 .logo {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  
 }
 
 /* Rest of the styles remain the same */
@@ -54,7 +81,6 @@
   --border-radius: 30px;
   --padding-start: 40px;
   --padding-end: 40px;
-  background-color: #ff6f61; /* Coral button color */
   color: #fff;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
 }
@@ -70,4 +96,7 @@
     transform: scale(1);
   }
 }
+
+
+
 

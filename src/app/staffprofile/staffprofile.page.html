@@ -78,6 +78,15 @@
               </div>
             </div>
             <div class="task-row">
+              <div class="task-col" *ngIf="(user$ | async)?.role.scheduleInterview === 'on'">
+                Schedule Interview
+              </div>
+              <div class="task-col" *ngIf="(user$ | async)?.role.score === 'on'">
+                Score Capture
+              </div>
+              
+            </div>
+            <div class="task-row">
               <div class="task-col" *ngIf="(user$ | async)?.role.addUser === 'on'">
                 +New Users
               </div>

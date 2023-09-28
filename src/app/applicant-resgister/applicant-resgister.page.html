@@ -1,15 +1,26 @@
-
-
 <ion-header>
-  <ion-toolbar class="custom-toolbar">
-    <ion-buttons slot="start" class="custom-logo-button" (click)="goToHomePage()">
-      <img src="assets\MUT LOGO.png" class="custom-logo">
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-menu-toggle>
+        <ion-button>
+          <ion-icon slot="icon-only" name="menu"></ion-icon>
+        </ion-button>
+      </ion-menu-toggle>
     </ion-buttons>
-    <h2 class="custom-header-title">LOGIN PAGE</h2>
+    <ion-title class="header-title">
+      Sign Up
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <div class="container">
+  <div class="centered-container">
+    <div class="image-container">
+      <img src="assets/logo.jpg" alt="Logo" class="logo">
+    </div>
+  </div>
+  
   <ion-card class="custom-card">
     <ion-card-content>
       <div class="custom-form">
@@ -36,6 +47,7 @@
       </div>
     </ion-card-content>
   </ion-card>
+  </div>
 </ion-content>
 
 <ion-footer class="custom-footer">

@@ -38,7 +38,8 @@ export class AddUserPage implements OnInit {
     addUser: 'off',
     marks: 'off',
     upcomingInterviews: 'off',
-    allUsers: 'off'
+    allUsers: 'off',
+    scheduleInterview: 'off'
   };
 
   constructor(
@@ -100,13 +101,13 @@ export class AddUserPage implements OnInit {
     this.role.allUsers = toggleValue;
     console.log(this.role);
   }
+  getScheduleInterviewValue(event: any) {
+    const toggleValue = event.target.checked ? 'on' : 'off';
+    this.role.scheduleInterview = toggleValue;
+    console.log(this.role);
+  }
   
   
-
-
-
-
-
   async Validation() {
  
 
@@ -340,7 +341,7 @@ async goToAllApplicants(): Promise<void> {
       toast.present();
     }
   } catch (error) {
-    console.error('Error navigating to grade avaerage validator Page:', error);
+    console.error('Error navigating to All Applicants Page:', error);
   }
 }
 
@@ -423,6 +424,27 @@ async goToScheduled(): Promise<void> {
     }
   } catch (error) {
     console.error('Error navigating to Scheduled interviews Page:', error);
+  }
+}
+
+async goToScheduleInterview(): Promise<void> {
+
+  try {
+    await this.getUser();
+
+    if (this.userDocument && this.userDocument.role && this.userDocument.role.scheduleInterview === 'on') {
+      // Navigate to the desired page
+      this.navController.navigateForward('/schedule-interviews');
+    } else {
+      const toast = await this.toastController.create({
+        message: 'Unauthorized user.',
+        duration: 2000,
+        position: 'top'
+      });
+      toast.present();
+    }
+  } catch (error) {
+    console.error('Error navigating to Schedule interview Page:', error);
   }
 }
 
