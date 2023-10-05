@@ -67,7 +67,7 @@
             <td class="white-text">{{data.certificate}}</td>
             <td class="white-text">{{data.email}}</td>
             <td>
-              <button ion-button (click)="approve(data.id, data.email)" class="horizontal-button approve-button" style="color: green;" >
+              <button ion-button (click)="onClickerr(data.email , data.fullName)" class="horizontal-button approve-button" style="color: green;" >
                 Approve 
               </button>
               <button ion-button (click)="decline(data.id, data.email)" class="horizontal-button decline-button" color="success" style="color: red;">

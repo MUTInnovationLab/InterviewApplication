@@ -23,7 +23,6 @@
         placeholder="Interviewee ID"
         type="number"
         [(ngModel)]="int_id"
-        pattern="[0-9]*"
         maxlength="13"
       ></ion-input>
     </ion-item>
@@ -35,17 +34,6 @@
         type="text"
         [(ngModel)]="name"
         id="f_name"
-        required
-      ></ion-input>
-    </ion-item>
-
-    <ion-item class="input-item">
-      <ion-icon name="person" slot="start"></ion-icon>
-      <ion-input
-        placeholder="Last Name"
-        type="text"
-        [(ngModel)]="surname"
-        id="l_name"
         required
       ></ion-input>
     </ion-item>

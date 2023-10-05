@@ -6,7 +6,7 @@ import { IonicModule, ModalController } from '@ionic/angular';
 
 
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { AngularFirestore, QueryDocumentSnapshot } from '@angular/fire/compat/firestore';
 import {  LoadingController,NavController, ToastController , AlertController} from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { ViewAcademicRecordModalPage } from '../view-academic-record-modal/view-academic-record-modal.page';
@@ -45,6 +45,12 @@ export class AllApplicantsPage implements OnInit {
 
       this.getAllData();
      }
+
+     onClickerr(email: string , fullName: string) {
+      this.navCtrl.navigateForward(['/schedule-interview'], { queryParams: { email , fullName } });
+    }
+
+
      goToView(): void {
       this.navController.navigateBack('/staffprofile');
     }
@@ -96,23 +102,16 @@ export class AllApplicantsPage implements OnInit {
     
   }
 
-  approve(applicantId: string, email: string) {
+  approve(data: any, applicantId: string, email: string) {
     const updatedStatus = 'active';
  
     this.db.collection('applicant-application').doc(applicantId).update({ status: updatedStatus })
       .then(() => {
         console.log('Approved!!!');
         this.showToast('Approved!!!');
-        this.navCtrl.navigateForward('/home');
-
-        const dataToSend = {
-          applicantId: applicantId,
-          email: email
-        };
-  
         this.navCtrl.navigateForward('/schedule-interview', {
-          queryParams: dataToSend
-          });
+          queryParams: { data: data, source: 'cards' },
+        });
         // Navigate to the next page and pass data using queryParams
         
       
@@ -191,6 +190,7 @@ export class AllApplicantsPage implements OnInit {
   
 
   ngOnInit() {
+    
   }
 
 
