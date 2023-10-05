@@ -33,6 +33,13 @@ export class ScheduleInterviewPage {
   constructor( private db: AngularFirestore,private router:Router,private toastController: ToastController,
     private alertController: AlertController,private loadingController: LoadingController,
      public navCtrl: NavController, private auth: AngularFireAuth) {}
+
+     ngOnInit() {
+      // Retrieve the data passed from the previous page
+      //const data = this.navCtrl.get('queryParams');
+      
+      // Now you can use the 'data' object in this component as needed
+    }
  
   async submit() {
   

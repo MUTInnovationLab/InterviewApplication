@@ -36,7 +36,7 @@ export class AllApplicantsPage implements OnInit {
 
   constructor(private http: HttpClient,private firestore: AngularFirestore, 
     private loadingController: LoadingController, 
-    navCtrl: NavController,
+    private navCtrl: NavController,
     private auth: AngularFireAuth,
     private toastController: ToastController,
     private alertController: AlertController,
@@ -103,6 +103,20 @@ export class AllApplicantsPage implements OnInit {
       .then(() => {
         console.log('Approved!!!');
         this.showToast('Approved!!!');
+        this.navCtrl.navigateForward('/home');
+
+        const dataToSend = {
+          applicantId: applicantId,
+          email: email
+        };
+  
+        this.navCtrl.navigateForward('/schedule-interview', {
+          queryParams: dataToSend
+          });
+        // Navigate to the next page and pass data using queryParams
+        
+      
+
         this.sendApproveNotification(email); // Pass the email to sendDeclineNotification method
       })
       .catch(error => {
