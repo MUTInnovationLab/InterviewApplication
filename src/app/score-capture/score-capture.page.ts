@@ -61,28 +61,28 @@ export class ScoreCapturePage implements OnInit {
      + 'Total:'+ this.total);
 
     // Now you can proceed with adding the data to Firestore if needed
-    // const formData = {
-    //   introduction: this.introduction,
-    //   teamwork: this.teamwork,
-    //   overallImpression: this.overallImpression,
-    //   leadershipSkills: this.leadershipSkills,
-    //   adaptability: this.adaptability,
-    //   communicationSkills: this.communicationSkills,
-    //   jobSpecificSkills: this.jobSpecificSkills,
-    //   problemSolving: this.problemSolving,
-    //   total: this.total,
-    // };
+    const formData = {
+      introduction: this.introduction,
+      teamwork: this.teamwork,
+      overallImpression: this.overallImpression,
+      leadershipSkills: this.leadershipSkills,
+      adaptability: this.adaptability,
+      communicationSkills: this.communicationSkills,
+      jobSpecificSkills: this.jobSpecificSkills,
+      problemSolving: this.problemSolving,
+      total: this.total,
+    };
 
-    // this.firestore
-    //   .collection('feedback')
-    //   .add(formData)
-    //   .then(() => {
-    //     // Data added successfully
-    //     console.log('Form data added to Firestore!');
-    //   })
-    //   .catch((error) => {
-    //     console.error('Error adding form data to Firestore:', error);
-    //   });
+    this.firestore
+      .collection('feedback')
+      .add(formData)
+      .then(() => {
+        // Data added successfully
+        console.log('Form data added to Firestore!');
+      })
+      .catch((error) => {
+        console.error('Error adding form data to Firestore:', error);
+      });
   }
 
   Clear() {
