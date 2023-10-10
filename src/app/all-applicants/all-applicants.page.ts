@@ -43,6 +43,12 @@ export class AllApplicantsPage implements OnInit {
     private navController: NavController,
     private db: AngularFirestore, private modalController: ModalController) {
 
+
+      this.tableData.sort((a, b) => {
+        console.log(`Sorting: ${a.gradeAverage} vs ${b.gradeAverage}`);
+        return b.gradeAverage - a.gradeAverage;
+      });
+
       this.getAllData();
      }
 
@@ -66,9 +72,43 @@ export class AllApplicantsPage implements OnInit {
           });
           console.log(this.userData);
           this.tableData = this.userData;
+
+          this.sortByGradeAverage();
+          this.sortByCerticate();
         });
     }
+
+    sortByGradeAverage() {
+      // Sort the tableData array by gradeAverage in descending order
+      this.tableData.sort((a, b) => b.gradeAverage - a.gradeAverage);
+    }
     
+    getQualificationValue(qualification: string): number {
+      switch (qualification.toLowerCase()) {
+        case 'Doctorate':
+          return 1;
+        case 'Masters':
+          return 2;
+        case 'Honors':
+          return 3;
+        case 'Bachelor/advanced':
+          return 4;
+        case 'Diploma':
+          return 5;
+        default:
+          return 6;
+      }
+    }
+     
+    sortByCerticate(){
+      this.tableData.forEach((data) => {
+        data.sortValue = this.getQualificationValue(data.certicate);
+      });
+      
+      // Sort the tableData array based on the sorting value
+      this.tableData.sort((a, b) => a.sortValue - b.sortValue);
+
+    }
     
     
     
