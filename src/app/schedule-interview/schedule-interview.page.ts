@@ -104,16 +104,6 @@ export class ScheduleInterviewPage {
           this.tables$ = data;
         });
     }
-  
-    // getPassedData() {
-    //   this.route.queryParams.subscribe((params: Params) => {
-    //     if (params && params['data']) {
-    //       this.email = params['data'];
-    //       console.log(this.email);
-    //       this.getOneDocumentData();
-    //     }
-    //   });
-    // }
 
     getPasedData() {
       this.route.queryParams.subscribe((params: Params) => {
