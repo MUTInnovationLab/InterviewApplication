@@ -5,6 +5,16 @@
   text-align: center;
 }
 
+ion-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: maroon;
+  color: white;
+  height: 70px;
+  animation: headerFadeIn 1s ease-in;
+}
+
 .maroon{
     background-color: rgb(247, 242, 242);
  }
@@ -155,7 +165,7 @@ transform: rotateX(35deg);
 
 .buttonH:after,
 .buttonH:before {
-background: #9b5f5f;
+background: #7e3d3d;
 content: "";
 height: 100%;
 left: 0;
@@ -167,7 +177,7 @@ z-index: -1;
 }
 
 .buttonH:after {
-background: #6f3131;
+background:#6b0000;
 width: 0;
 }
 
@@ -253,13 +263,13 @@ to {
 // Button Submit code
 
 .butSubmit{
-  background-color: #eee;
+  background-color: #7e3d3d;
   border: none;
   padding: 1rem;
   font-size: 1rem;
   width: 100%;
   border-radius: 1rem;
-  color: rgb(21, 206, 45);
+  color: rgb(255, 255, 255);
   box-shadow: 0 0.4rem #dfd9d9;
   cursor: pointer;
  }
@@ -271,7 +281,8 @@ to {
  }
  
  .butSubmit:hover:not(:disabled) {
-  background: rgb(200, 201, 204);
+  background: maroon;
+  //background: #0d45a5;
   color: white;
   text-shadow: 0 0.1rem #bcb4b4;
  }
@@ -297,6 +308,17 @@ to {
   text-align: center;
   font-size: 1.125rem;
   max-width: 23%;
+  flex-direction: column; /* Change to a row layout */
+  text-align: center; /* Center text in each container */
+  width: auto;
+}
+
+@media (max-width: 768px) {
+  .form {
+    flex-direction: row; /* Change to a row layout */
+    text-align: center; /* Center text in each container */
+    width: 25%; /* Allow the containers to shrink to content width */
+  }
 }
 
 .form-title {
@@ -322,11 +344,13 @@ to {
   padding: 10px;
   margin-top: 2.1875rem;
   border-radius: 10px;
-  border: 2px dashed rgb(171, 202, 255);
+  border: 2px dashed #7e3d3d;
   color: #444;
   cursor: pointer;
   transition: background .2s ease-in-out, border .2s ease-in-out;
 }
+
+
 
 .drop-container:hover {
   background: rgba(0, 140, 255, 0.164);
@@ -358,7 +382,7 @@ to {
 #file-input::file-selector-button {
   margin-right: 20px;
   border: none;
-  background: #084cdf;
+  background: #7e3d3d;
   padding: 10px 20px;
   border-radius: 10px;
   color: #fff;
@@ -367,13 +391,14 @@ to {
 }
 
 #file-input::file-selector-button:hover {
-  background: #0d45a5;
+  background: maroon;
 }
 
 //// Card layout
 
 .Crd {
-  --glow-color: rgb(176, 255, 251);
+ // --glow-color: #065D78;
+  --glow-color: maroon;
   --glow-spread-color: rgba(123, 246, 255, 0.781);
   --enhanced-glow-color: rgb(182, 71, 71);
   --btn-color: rgba(65, 65, 65, 0.508);
@@ -385,17 +410,36 @@ to {
   text-align: center;
   overflow: hidden;
   color: var(--glow-color);
-  background-color: var(--btn-color);
+  background-color: #ffffff;
   border-radius: 20px;
   position: relative;
 }
+
+.Crd2 {
+  // --glow-color: #065D78;
+   --glow-color: maroon;
+   --glow-spread-color: rgba(123, 246, 255, 0.781);
+   --enhanced-glow-color: rgb(182, 71, 71);
+   --btn-color: rgba(65, 65, 65, 0.508);
+   border: 2px solid var(--glow-color);
+   padding: 2px;
+   display: flex;
+   max-width: 100%;
+   flex-direction: column;
+   text-align: center;
+   overflow: hidden;
+   color: var(--glow-color);
+   background-color: #ffffff;
+   border-radius: 20px;
+   position: relative;
+ }
 
 .field-input {
   width: 100%;
   min-height: 45px;
   //color: #444;
   color: rgba(65, 65, 65, 0.508);
-  outline: none;
+  outline: 2px;
   transition: 0.35s;
   padding: 1px;
   //background-color: #444;
