@@ -96,4 +96,7 @@ export class ScoreCapturePage implements OnInit {
     this.problemSolving = 0;
     this.total = 0;
   }
+
+
+  
 }

@@ -8,8 +8,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
   styleUrls: ['./marks.page.scss'],
 })
 export class MarksPage implements OnInit {
-  tableData: any[] = [];
-  scoreData:any;
+  interviewData: any[] = [];
 
   constructor(//private menuCtrl: MenuController,
     private firestore: AngularFirestore,
@@ -22,13 +21,15 @@ export class MarksPage implements OnInit {
   ngOnInit() {
   }
   
-
   getScoreData() {
-    this.db.collection('feedback')
-      .valueChanges()
-      .subscribe((data: any[]) => {
-        this.scoreData = data.map(item => item.Score);
-        console.log(this.scoreData);
-      });
-}
+    this.firestore.collection('feedback').valueChanges().subscribe((data: any[]) => {
+      this.interviewData = data.map(item => ({
+        id: item.id,
+        intervieweeName: item.intervieweeName,
+        intervieweeSurname: item.intervieweeSurname,
+        emailAddress: item.emailAddress,
+        score: item.Score
+      }));
+    });
+  }
 }

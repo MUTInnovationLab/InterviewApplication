@@ -1,5 +1,4 @@
 <ion-header>
-  
   <ion-toolbar color="dark">
     <ion-buttons slot="start">
       <ion-menu-toggle>
@@ -9,7 +8,7 @@
       </ion-menu-toggle>
     </ion-buttons>
     <ion-title class="header-title">
-      View Interview  Marks
+      View Interview Marks
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -21,20 +20,18 @@
         <ion-row class="header-row">
           <ion-col>ID</ion-col>
           <ion-col>Interviewee Name</ion-col>
-          <ion-col>interviewee Surname</ion-col>
+          <ion-col>Interviewee Surname</ion-col>
           <ion-col>Email Address</ion-col>
           <ion-col>Score</ion-col>
         </ion-row>
 
-        <!-- Replace this with an *ngFor loop to display dynamic data -->
-        <ion-row class="data-row">
-          <ion-col>1</ion-col>
-          <ion-col>John</ion-col>
-          <ion-col>Doe</ion-col>
-          <ion-col>john.doe@example.com</ion-col>
-          <ion-col></ion-col>
+        <ion-row class="data-row" *ngFor="let item of interviewData">
+          <ion-col>{{ item.id }}</ion-col>
+          <ion-col>{{ item.intervieweeName }}</ion-col>
+          <ion-col>{{ item.intervieweeSurname }}</ion-col>
+          <ion-col>{{ item.emailAddress }}</ion-col>
+          <ion-col>{{ item.score }}</ion-col>
         </ion-row>
-        <!-- End of data rows -->
       </ion-grid>
     </ion-card-content>
   </ion-card>
