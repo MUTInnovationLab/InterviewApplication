@@ -244,6 +244,23 @@ export class ScheduleInterviewPage {
         toast.present();
         return;
       }
+
+      const collectionRef = this.db.collection('Interviewees').ref;
+
+  // Check if the email already exists in the Firestore collection
+      const emailExistsSnapshot = await collectionRef.where('email', '==', this.email).get();
+
+      if (!emailExistsSnapshot.empty) {
+        const toast = await this.toastController.create({
+          message: 'Email already exists',
+          duration: 2000,
+          position: 'top',
+          color: 'danger'
+        });
+        toast.present();
+        loader.dismiss();
+        return;
+      }
       
       this.db
         .collection('Interviewees')
@@ -256,6 +273,7 @@ export class ScheduleInterviewPage {
         })
         .then((docRef) => {
           loader.dismiss();
+
 
         })
         .catch((error) => {
