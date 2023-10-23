@@ -198,21 +198,21 @@ export class ScheduleInterviewPage {
     // return;
    
   
-      const pattern = /^[a-zA-Z] *$/;
+      const pattern =/^[a-zA-Z]*$/;
   
-      if (!pattern.test(this.name)) {
-        const toast = await this.toastController.create({
-          message: 'Name must be characters only',
-          duration: 2000,
-          position: 'top',
-          color: 'danger'
-        });
-        toast.present();
-        return;
+      // if (!pattern.test(this.name)) {
+      //   const toast = await this.toastController.create({
+      //     message: 'Name must be characters only',
+      //     duration: 2000,
+      //     position: 'top',
+      //     color: 'danger'
+      //   });
+      //   toast.present();
+      //   return;
 
-      }
+      // }
   
-      if (!pattern.test(this.surname)) {
+    /*  if (!pattern.test(this.surname)) {
         const toast = await this.toastController.create({
           message: 'Surname must be characters only',
           duration: 2000,
@@ -222,11 +222,12 @@ export class ScheduleInterviewPage {
         toast.present();
         return;
 
-      }
+      } */
     
       
   
     await loader.present(); 
+
     
     try 
     {
@@ -243,6 +244,43 @@ export class ScheduleInterviewPage {
         toast.present();
         return;
       }
+
+      const collectionRef = this.db.collection('Interviewees').ref;
+
+  // Check if the email already exists in the Firestore collection
+      const emailExistsSnapshot = await collectionRef.where('email', '==', this.email).get();
+
+      if (!emailExistsSnapshot.empty) {
+        const toast = await this.toastController.create({
+          message: 'Email already exists',
+          duration: 2000,
+          position: 'top',
+          color: 'danger'
+        });
+        toast.present();
+        loader.dismiss();
+        return;
+      }
+      
+      this.db
+        .collection('Interviewees')
+        .add({
+                int_id:this.int_id,
+                name:this.name,
+                email: this.email,
+                date:this.date,
+                Status:this.status
+        })
+        .then((docRef) => {
+          loader.dismiss();
+
+
+        })
+        .catch((error) => {
+         // loader.dismiss();
+          console.error('Error adding document: ', error);
+          alert('failed : ' + error);
+        });
   
       // Proceed with user creation and data addition
     //   const userCredential = await this.auth.createUserWithEmailAndPassword(this.email, this.int_id);
@@ -264,64 +302,64 @@ export class ScheduleInterviewPage {
       console.error('Error:', error);
       // Display appropriate error messages using toastController
     }
-    this.auth.createUserWithEmailAndPassword(this.email, this.int_id)
-      .then( userCredential => {
+    // this.auth.createUserWithEmailAndPassword(this.email, this.int_id)
+    //   .then( userCredential => {
 
       
-        this.db
-        .collection('Interviewees')
-        .add({
-                int_id:this.int_id,
-                name:this.name,
-                email: this.email,
-                date:this.date,
-                Status:this.status
-        })
-        .then((docRef) => {
-          loader.dismiss();
+    //     this.db
+    //     .collection('Interviewees')
+    //     .add({
+    //             int_id:this.int_id,
+    //             name:this.name,
+    //             email: this.email,
+    //             date:this.date,
+    //             Status:this.status
+    //     })
+    //     .then((docRef) => {
+    //       loader.dismiss();
 
-        })
-        .catch((error) => {
-         // loader.dismiss();
-          console.error('Error adding document: ', error);
-          alert('failed : ' + error);
-        });
+    //     })
+    //     .catch((error) => {
+    //      // loader.dismiss();
+    //       console.error('Error adding document: ', error);
+    //       alert('failed : ' + error);
+    //     });
     
        
 
-        /////
-        // this.router.navigateByUrl("/login");
+    //     /////
+    //     // this.router.navigateByUrl("/login");
        
-        // ...
-      })
-      .catch(async( error:any) => {
-        //loader.dismiss();
-        const errorCode = error.code;
-        const errorMessage = error.message;
+    //     // ...
+    //   })
+    //   .catch(async( error:any) => {
+    //     //loader.dismiss();
+    //     const errorCode = error.code;
+    //     const errorMessage = error.message;
        
 
 
-        if(errorMessage=='Firebase: The email address is badly formatted. (auth/invalid-email).'){
-        const toast = await this.toastController.create({
-          message: "The email address is badly formatted",
-          duration: 2000,
-          position: 'top',
-          color:'danger'
-        });
-        toast.present();
-        return;
+    //     if(errorMessage=='Firebase: The email address is badly formatted. (auth/invalid-email).'){
+    //     const toast = await this.toastController.create({
+    //       message: "The email address is badly formatted",
+    //       duration: 2000,
+    //       position: 'top',
+    //       color:'danger'
+    //     });
+    //     toast.present();
+    //     return;
         
-      }else if(errorMessage=="Firebase: The email address is already in use by another account. (auth/email-already-in-use)."){
-        const toast = await this.toastController.create({
-          message: "The email address is already in use by another account",
-          duration: 2000,
-          position: 'top',
-          color:'danger'
-        });
-        toast.present();
-        return;
-    }
-      });
+    //   }else if(errorMessage=="Firebase: The email address is already in use by another account. (auth/email-already-in-use)."){
+    //     const toast = await this.toastController.create({
+    //       message: "The email address is already in use by another account",
+    //       duration: 2000,
+    //       position: 'top',
+    //       color:'danger'
+    //     });
+    //     toast.present();
+    //     return;
+    // }
+    //   });
 
       //sending an email
       const emailParams={

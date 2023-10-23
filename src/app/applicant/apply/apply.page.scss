@@ -307,7 +307,7 @@ to {
   padding: 2rem .7rem .7rem .7rem;
   text-align: center;
   font-size: 1.125rem;
-  max-width: 23%;
+  max-width: 400px;
   flex-direction: column; /* Change to a row layout */
   text-align: center; /* Center text in each container */
   width: auto;
@@ -317,7 +317,7 @@ to {
   .form {
     flex-direction: row; /* Change to a row layout */
     text-align: center; /* Center text in each container */
-    width: 25%; /* Allow the containers to shrink to content width */
+    width: 100%; /* Allow the containers to shrink to content width */
   }
 }
 
@@ -430,8 +430,8 @@ to {
    overflow: hidden;
    color: var(--glow-color);
    background-color: #ffffff;
-   border-radius: 20px;
-   position: relative;
+  // border-radius: 20px;
+  // position: relative;
  }
 
 .field-input {
