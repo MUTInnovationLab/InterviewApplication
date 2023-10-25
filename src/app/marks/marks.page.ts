@@ -31,5 +31,5 @@ export class MarksPage implements OnInit {
         score: item.Score
       }));
     });
-  }
-}
+  
+}}

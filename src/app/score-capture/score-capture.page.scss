@@ -1,11 +1,59 @@
 /* score-capture.page.scss */
+ion-content{
+  --background:#065D78 !important;
+}
+ion-input{
+  width: 20% !important;
+  height: 100px;
+}
+ion-toolbar {
+  border-top: 3px solid brown ; /* Add a red top border */
+  border-bottom: 3px solid brown; /* Add a red bottom border */
+}
+
+ion-label{
+  width: 70%;
+}
+.label_1{
+  margin-top:12px;
+}
+.label_2{
+  margin-top:35px;
+  margin-left:-160px;
+}
+.label_3{
+  margin-top:35px;
+  margin-left:-160px;
+  position:relative;
+}
+.skill_card{
+  margin-top: -5px;
+  --background: #C9911A !important;
+
+}
+.custom-background {
+  --background: rgba(136, 35, 35, 0);
+}
+
+.text-container {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.panel_member{
+  background: transparent;
+  margin-top:-5px;
+  height:70px;
+  align-items:center;
+  
+}
 .header-title {
-  color:Black;
+  color:white;
   font-size: 24px;
   font-weight: bold;
   text-align: center;
 }
-
 .main-grid {
   height: 100%;
   display: flex;
@@ -31,6 +79,7 @@
 }
 
 .user-card {
+  display:flex !important;
   width: 90%;
   margin: 10px;
   padding: 15px;
@@ -68,7 +117,7 @@
 }
 
 .score-input {
-  width: 60px;
+  width: 40px;
 }
 
 .total-row {
