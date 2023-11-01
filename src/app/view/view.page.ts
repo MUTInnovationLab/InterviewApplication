@@ -25,11 +25,15 @@ export class ViewPage implements OnInit {
   detProfile:any;
   pdfUrl: any;
   status='';
+  subject: string = '';
+  details: string = '';
   user = {
     status: 'pending', // Change this value to test different statuses
   };
+  selectedIssue: string | null = null; // Initialize the selectedIssue property
 
-  constructor(private loadingController: LoadingController,private storage: AngularFireStorage , private auth:AngularFireAuth,private navCtrl: NavController ,private afs: AngularFirestore,private alertController: AlertController,
+
+  constructor( private firestore: AngularFirestore,private loadingController: LoadingController,private storage: AngularFireStorage , private auth:AngularFireAuth,private navCtrl: NavController ,private afs: AngularFirestore,private alertController: AlertController,
     private toastController: ToastController) {
 
 
@@ -118,6 +122,39 @@ export class ViewPage implements OnInit {
     ngOnInit() {
  
     }
+
+
+
+    submitReport() {
+      // Assuming you are using Firebase Authentication, you can get the currently logged-in user's email like this:
+      const user = firebase.auth().currentUser;
+      const userEmail = user ? user.email : null;
+    
+      const reportData = {
+        issue: this.selectedIssue,
+        details: this.details,
+        userEmail: userEmail, // Add the user's email to the reportData
+        status: "pending-Issue" // Add the status field with the value "pending-Issue"
+      };
+    
+      console.log("reportData:", reportData); // Add this line for debugging
+    
+      // Add the report data to the Firestore collection
+      this.firestore.collection('REPORTS').add(reportData)
+        .then(() => {
+          // Reset form fields or perform any other necessary actions
+          this.selectedIssue = null;
+          this.details = '';
+          // Close the modal if needed
+        })
+        .catch(error => {
+          console.error('Error adding report:', error);
+          // Handle the error as needed
+        });
+    }
+    
+
+
     
 isButtonDisabled(): boolean {
   return this.status === "placed";
@@ -154,7 +191,7 @@ isButtonDisabled(): boolean {
            
             
             this.auth.signOut().then(() => {
-              this. navCtrl.navigateForward("/applicant-login");
+              this. navCtrl.navigateForward("/sign-in");
               this.presentToast()
         
         
@@ -335,6 +372,19 @@ isButtonDisabled(): boolean {
   } else {
     console.log('User not logged in');
   }
+}
+
+
+
+submitQueryOrReport() {
+  // Validate the form fields if needed
+
+  // Prepare the data to send back to the caller
+  const queryData = {
+    subject: this.subject,
+    details: this.details,
+  };
+
 }
 
 }

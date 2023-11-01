@@ -1,10 +1,46 @@
-<ion-header [translucent]="true">
-  <ion-toolbar color="primary">
-    <ion-title class="header-title">RESET PASSWORD</ion-title>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" (click)="goToHomePage()">
+      <img src="assets\MUT LOGO.png">
+    </ion-buttons>
+    <ion-title class="header-title">Staff Dashboard</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-button id="popover-button" >
+          <ion-icon name="person"></ion-icon>
+        </ion-button>
+
+        <ion-popover trigger="popover-button" [dismissOnSelect]="true">
+          <ng-template>
+            <ion-content>
+              <ion-list >
+                <ion-item lines="none" [button]="true" [detail]="false" (click)="goToView()" ><ion-icon name="eye" ></ion-icon> &nbsp;  Profile</ion-item>
+                <ion-item lines="none" [button]="true" [detail]="false"  (click)="presentConfirmationAlert()"><ion-icon name="exit"></ion-icon>&nbsp;<p>LOGOUT</p></ion-item>
+              </ion-list>
+            </ion-content>
+          </ng-template>
+        </ion-popover>
+<!-- 
+        <ion-popover trigger="popover-button" [dismissOnSelect]="true">
+          <ng-template>
+            <ion-content>
+              <ion-list>
+                <ion-item lines="none" [button]="true" [detail]="false" (click)="goToView()">
+                  <ion-icon name="eye"></ion-icon> &nbsp; VIEW PROFILE</ion-item>
+                <ion-item lines="none" [button]="true" [detail]="false" (click)="presentConfirmationAlert()">
+                  <ion-icon color="danger" name="exit"></ion-icon>&nbsp;
+                  <p>LOGOUT</p>
+                </ion-item>
+              </ion-list>
+            </ion-content>
+          </ng-template>
+        </ion-popover> -->
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" style="--background: url('assets/tiny.jpg') no-repeat center / cover;">
+<ion-content [fullscreen]="true">
   <br>
   <br>
   <br>
@@ -19,25 +55,8 @@
         </ion-item>
         <div class="error-message" *ngIf="emailError">{{ emailError }}</div>
         <br>
-        <button expand="block" (click)="reset()" class="reset-button">
-          <span class="span-mother">
-            <span>R</span>
-            <span>e</span>
-            <span>s</span>
-            <span>e</span>
-            <span>t</span>
-          </span>
-          <span class="span-mother2">
-            <span>P</span>
-            <span>a</span>
-            <span>s</span>
-            <span>s</span>
-            <span>w</span>
-            <span>o</span>
-            <span>r</span>
-            <span>d</span>
-          </span>
-        </button>
+        <button class="butSubmit" expand="block" (click)="reset()">Reset</button>
+        
         <div class="form-section">
           <p>I got a password <a href="applicant-login()">Log in</a> </p>
         </div>
@@ -50,5 +69,5 @@
 </ion-content>
 
 <ion-footer class="custom-footer">
-  Designed by @<b>MUT INNOVATIONLAB</b>
+  Designed with ❤️ by <b>MUT INNOVATIONLAB</b>
 </ion-footer>

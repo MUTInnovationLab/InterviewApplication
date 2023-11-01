@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { where } from 'firebase/firestore';
+import {Input, Output, EventEmitter } from '@angular/core';
+
 
 @Component({
   selector: 'app-score-capture',
@@ -7,7 +10,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
   styleUrls: ['./score-capture.page.scss'],
 })
 export class ScoreCapturePage implements OnInit {
-
+  groupedInterviewees: Map<string, any[]> = new Map();
   introduction: number = 0;
   teamwork: number = 0;
   overallImpression: number = 0;
@@ -17,8 +20,11 @@ export class ScoreCapturePage implements OnInit {
   jobSpecificSkills: number = 0;
   problemSolving: number = 0;
   total: number = 0;
+ todayDateString: string;
 
-  constructor(private firestore: AngularFirestore) {}
+  constructor(private firestore: AngularFirestore) {
+    this.todayDateString = new Date().toDateString();
+  }
 
   ngOnInit() {}
 
@@ -32,6 +38,29 @@ export class ScoreCapturePage implements OnInit {
       this.limitToTen(this.communicationSkills) +
       this.limitToTen(this.jobSpecificSkills) +
       this.limitToTen(this.problemSolving);
+  }
+
+  fetchData() {
+    this.firestore.collection('Interviewees').valueChanges().subscribe((data: any[]) => {
+      this.groupedInterviewees = data.reduce((result, interviewee) => {
+        const itemDate = new Date(interviewee.date);
+        const dateKey = itemDate.toDateString();
+        
+        if (dateKey === this.todayDateString) {
+          //interviewee.date = 'Today';
+        } else {
+          interviewee.date = dateKey;
+        }
+  
+        if (!result.has(dateKey)) {
+          result.set(dateKey, []);
+        }
+        result.get(dateKey).push(interviewee);
+        
+        return result;
+      }, new Map<string, any[]>());
+  
+    });
   }
 
   limitToTen(value: number): number {

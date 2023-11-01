@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { NavController, ToastController } from '@ionic/angular';
 import { AngularFireAuth} from '@angular/fire/compat/auth';
+import { AlertController } from '@ionic/angular';
 
 
 
@@ -15,7 +16,7 @@ import { AngularFireAuth} from '@angular/fire/compat/auth';
 export class ResetPage implements OnInit {
   email:any;
   emailError:any;
-  constructor(private auth:AngularFireAuth,private navController: NavController) { }
+  constructor(private auth:AngularFireAuth,private navController: NavController,private alertController: AlertController,private toastController: ToastController,private navCtrl: NavController) { }
   
 
   ngOnInit() {
@@ -48,7 +49,60 @@ export class ResetPage implements OnInit {
     });
   }
 
+  goToView() {
+    this.navController.navigateForward('/view');
+  }
+
   goToPage() {
     this.navController.navigateForward("/applicant-login");
   }
-}
+
+  async presentConfirmationAlert() {
+    const alert = await this.alertController.create({
+      header: 'Confirmation',
+      message: 'Are you sure you want to SIGN OUT?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+         cssClass: 'my-custom-alert',
+          handler: () => {
+            console.log('Confirmation canceled');
+          }
+        }, {
+          text: 'Confirm',
+          handler: () => {
+           
+            
+            this.auth.signOut().then(() => {
+              this. navCtrl.navigateForward("/applicant-login");
+              this.presentToast();
+        
+        
+            }).catch(() => {
+            
+            });
+
+
+
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'SIGNED OUT!',
+      duration: 1500,
+      position: 'top',
+    
+    });
+
+    await toast.present();
+  }
+
+  }
+

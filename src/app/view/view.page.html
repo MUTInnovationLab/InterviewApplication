@@ -6,7 +6,7 @@
     <ion-buttons slot="start" class="phuto"  (click)="goToHomePage()">
       <img src="assets\MUT LOGO.png" class="image-size" >
     </ion-buttons>
-    <h2 class="header-title">PROFILE</h2>
+    <h2 class="header-title">MUT STUDENT PROFILE</h2>
     <ion-title></ion-title>
   </ion-toolbar>
 </ion-header>
@@ -21,9 +21,19 @@
             MY PROFILE
           </ion-card-title>
         </ion-card-header>
-        <ion-icon class="prof" name="person"></ion-icon>
+    
+        <ion-card-content>
+          <a href="assets/tom.pdf" download="tom.pdf">Download Guiding PDF document</a>
+          <div style="max-height: 400px; overflow-x: scroll;">
+            <video width="100%" controls>
+              <source src="assets/tinywo.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </ion-card-content>
       </ion-card>
     </ng-container>
+    
     
     <ng-template #profileCard>
       <ion-card *ngIf="user$ | async as user">
@@ -127,9 +137,11 @@
 
         <div *ngIf="pdfUrl">
         
-          <button style="background-color: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 4px;">
+          <button style="background-color: #802B28; color: white; border: none; padding: 10px 20px; border-radius: 4px;">
+            <ion-icon name="arrow-down-outline"></ion-icon>
             <a href="{{ pdfUrl }}" target="_blank" rel="noopener noreferrer" style="color: white; text-decoration: none;">Download CV</a>
             </button>
+            
      </div>
      <div *ngIf="!pdfUrl">
        <span style="color: red;">
@@ -140,8 +152,42 @@
         
       </ion-card-content>
     </ion-card>
+
+
+
+    
     </ng-template>
     <ion-row>
+      <ion-col size="6">
+        <ion-button expand="block" color="primary" routerLink="/edit-profile" (click)="goToCreate()" title="click to edit your details" [disabled]="isButtonDisabled()">
+          <ion-icon name="pencil"></ion-icon>
+          {{ detProfile ? 'Update' : 'Create' }}
+        </ion-button>
+        
+      </ion-col>
+      <ion-col size="6">
+        <ion-button expand="block" color="success" (click)="toggleAllDetails()" title="click to view all your details">
+          <ion-icon name="list"></ion-icon>
+          {{ showAll ? 'Hide Details' : 'View All Details' }}
+        </ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button expand="block" color="danger" (click)="confermDelete()" title="click to delete your profile" [disabled]="isButtonDisabled()">
+          <ion-icon name="trash"></ion-icon>
+          Delete
+        </ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button expand="block" color="medium" (click)="presentConfirmationAlert()" title="click to LogOut">
+          <ion-icon name="exit"></ion-icon>
+          Exit
+        </ion-button>
+      </ion-col>
+
+
+
+    
+      
        <ion-item *ngIf="this.status === 'recommended' " class="item">
         <ion-label class="status">Status</ion-label>
         <ion-select [(ngModel)]="status" (ionChange)="updateStatus(status)">
@@ -149,36 +195,76 @@
           <ion-select-option value="placed">Placed</ion-select-option>
         </ion-select>
       </ion-item>
+      
+      
+      
+      
+      
+
+      
+   
     </ion-row>
   </div>
+  <ion-item id="open-custom-dialog" #modal trigger="open-custom-dialog" class="query-back" >
+  <span class="loader"> <ion-icon class="help-circle-sharp"  name="help-circle-sharp"></ion-icon></span>
+   </ion-item>
 
 
-  <div class="vertical-buttons">
-    <ion-button class="col11" expand="block" color="primary" routerLink="/edit-profile" (click)="goToCreate()" title="click to edit your details" [disabled]="isButtonDisabled()">
-      <ion-icon name="pencil"></ion-icon>
-      {{ detProfile ? 'Update Profile' : 'Apply'}}
-    </ion-button>
 
-    <ion-button class="col11" expand="block" color="success" (click)="toggleAllDetails()" title="click to view all your details">
-      <ion-icon name="list"></ion-icon>
-      {{ showAll ? 'Hide Details' : 'View All Details' }}
-    </ion-button>
 
-    <ion-button class="col11" expand="block" color="danger" (click)="confermDelete()" title="click to delete your profile" [disabled]="isButtonDisabled()">
-      <ion-icon name="trash"></ion-icon>
-      Delete
-    </ion-button>
+ 
+   <ion-modal id="example-modal" #modal trigger="open-custom-dialog">
+  <ng-template>
+    <div class="wrapper">
+      <ion-content>
+        <ion-header>
+          <ion-toolbar color="primary">
+            <ion-title class="modal-title">Query or Report Bug</ion-title>
+            <ion-buttons slot="end">
+              <ion-button fill="clear" >
+                <ion-icon name="close-outline" slot="icon-only"></ion-icon>
+              </ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
 
-    <ion-button class="col11" expand="block" color="medium" (click)="presentConfirmationAlert()" title="click to LogOut">
-      <ion-icon name="exit"></ion-icon>
-      Exit
-    </ion-button>
-  </div>
+        <ion-item class="modal-input" lines="none">
+          <ion-list>
+            <ion-item>
+              <ion-select [(ngModel)]="selectedIssue" aria-label="Issue" placeholder="Select Issue">
+                <ion-select-option value="Uploading Files">Uploading Files</ion-select-option>
+                <ion-select-option value="Status Change">Status Change</ion-select-option>
+                <ion-select-option value="Creating Profile">Creating Profile</ion-select-option>
+                <ion-select-option value="Profile Not Found">Profile Not Found</ion-select-option>
+                <ion-select-option value="Performance">Performance</ion-select-option>
+                <ion-select-option value="Other">Other</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+        </ion-item>
+
+        <ion-item class="modal-input-area" lines="none">
+          <ion-label position="floating">Details</ion-label>
+          <ion-textarea [(ngModel)]="details" rows="12" placeholder="Describe your query or report"></ion-textarea>
+        </ion-item>
+
+        <ion-button class="modal-button" expand="full" shape="round" color="primary" (click)="submitReport()">Submit</ion-button>
+      </ion-content>
+    </div>
+  </ng-template>
+</ion-modal>
+
+
+
+
+
+
+
 
 
 </ion-content>
 
-<ion-footer class="custom-footer">
+<ion-footer>
   Designed by @<b>MUT INNOVATIONLAB</b>
 </ion-footer>
 
