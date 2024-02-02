@@ -21,21 +21,34 @@
                 <ion-label class="label_2">Email Address</ion-label>
               <!-- </ion-item> -->
             <!-- </ion-list> -->
-          </ion-card>
-          <ion-content class="container1" *ngFor="let group of groupedInterviewees | keyvalue">
-          <ion-item style="height: 50px;" class="custom-background" *ngFor="let item of group.value">
-            <ion-label style="color:white">Upcoming Interviews</ion-label>
             
-            <ion-card  style="display:flex;background-color: #C9911A;color:white" *ngFor="let group of groupedInterviewees | keyvalue">
-                <ion-icon name="person-add-outline" style="font-size: 45px; color: rgb(15, 76, 126);margin-top:10px;" ></ion-icon>
-                <p>ID: {{ item.int_id }}</p>
-                <p>Name: {{ item.name }}</p>
-                <p>Surname: {{ item.surname }}</p>
-                <p>Email: {{ item.email }}</p>
-                <p>Date: {{ item.date }}</p>
-                <p>Status: {{ item.Status }}</p>
+          </ion-card>
+          
+          <ion-content>
+            <ion-list *ngFor="let group of groupedInterviewees | keyvalue">
+              <ion-item-divider class="table">
+                <ion-label>{{ group.key === todayDateString ? 'Today' : group.key }}</ion-label>
+                <button class="submitBtn" (click)="start()">
+                    Start
+                    <svg fill="white" viewBox="0 0 448 512" height="1em" class="arrow"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"></path></svg>
+                  </button>
+              </ion-item-divider>
+              <ion-item *ngFor="let item of group.value">
+                <!-- Your card content here -->
+                <ion-card class="custom-card">
+                   
+                  <ion-card-content>
+                    <p>ID: {{ item.int_id }}</p>
+                    <p>Name: {{ item.name }}</p>
+                    <p>Surname:{{ item.surname }}</p>
+                    <p>Email: {{ item.email }}</p>
+                    <p>Date: {{ item.date }}</p> 
+                    <p>Status: {{ item.Status }}</p>
+                  
+                  </ion-card-content>
               </ion-card>
-                      </ion-item>
+              </ion-item>
+            </ion-list>
           </ion-content>
         </ion-list>
         
@@ -203,6 +216,6 @@
     
   </ion-grid>
 </ion-content>
-<ion-footer class="custom-footer">
+<!-- <ion-footer class="custom-footer">
   Designed by @<b>MUT INNOVATIONLAB</b>
-</ion-footer>
+</ion-footer> -->
