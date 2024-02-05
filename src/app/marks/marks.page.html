@@ -18,19 +18,17 @@
     <ion-card-content>
       <ion-grid class="custom-grid">
         <ion-row class="header-row">
-          <ion-col>ID</ion-col>
-          <ion-col>Interviewee Name</ion-col>
-          <ion-col>Interviewee Surname</ion-col>
+          <ion-col>Name</ion-col>
           <ion-col>Email Address</ion-col>
+          <ion-col>Status</ion-col>
           <ion-col>Score</ion-col>
         </ion-row>
 
         <ion-row class="data-row" *ngFor="let item of interviewData">
-          <ion-col>{{ item.id }}</ion-col>
-          <ion-col>{{ item.intervieweeName }}</ion-col>
-          <ion-col>{{ item.intervieweeSurname }}</ion-col>
-          <ion-col>{{ item.emailAddress }}</ion-col>
-          <ion-col>{{ item.score }}</ion-col>
+          <ion-col>{{ item.stringData.name }}</ion-col>
+          <ion-col>{{ item.stringData.email }}</ion-col>
+          <ion-col>{{ item.stringData.Status }}</ion-col>
+          <ion-col>{{ item.numericData.total }}</ion-col>
         </ion-row>
       </ion-grid>
     </ion-card-content>

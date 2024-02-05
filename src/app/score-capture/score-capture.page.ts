@@ -12,6 +12,11 @@ export class ScoreCapturePage implements OnInit {
   groupedInterviewees: Map<string, any[]> = new Map();
   selectedOption: any; // Variable to store the selected option
 
+  int_id! :number;
+  name!:string;
+  surname!: string;
+  email!: string;
+  Status!: string;
   introduction: number = 0;
   teamwork: number = 0;
   overallImpression: number = 0;
@@ -72,8 +77,11 @@ export class ScoreCapturePage implements OnInit {
 
   start() {
     if (this.inProgressInterviewee) {
-      const { name, surname, email } = this.inProgressInterviewee;
-
+      const { name, surname, email, Status } = this.inProgressInterviewee;
+      this.name = name;
+      this.surname= surname;
+      this.email = email;
+      this.Status = Status;
       // Display a message box with the details of the person with "In Progress" status
       const confirmation = window.confirm(`Start interview with ${name} ${surname} (${email})?`);
       if (confirmation) {
@@ -112,13 +120,25 @@ export class ScoreCapturePage implements OnInit {
     }
   }
 
+
+
   submitForm() {
     this.calculateTotal();
-
-    alert(`Introduction: ${this.introduction}\nTeamwork: ${this.teamwork}\n...`); // Include all the relevant details
-
-    // Now you can proceed with adding the data to Firestore if needed
-    const formData = {
+    
+    // Display values in the alert
+    alert(`Introduction: ${this.introduction}\nTeamwork: ${this.teamwork}\n...\nName: ${this.name}`);
+    
+    // Separate string values
+    const stringData = {
+      name: this.name,
+      email: this.email,
+      Status: this.Status,
+      // Include other string fields as needed
+    };
+  
+    // Separate numeric values
+    const numericData = {
+      //int_id: this.int_id,
       introduction: this.introduction,
       teamwork: this.teamwork,
       overallImpression: this.overallImpression,
@@ -128,12 +148,16 @@ export class ScoreCapturePage implements OnInit {
       jobSpecificSkills: this.jobSpecificSkills,
       problemSolving: this.problemSolving,
       total: this.total,
-      // Include other details as needed
+      // Include other numeric fields as needed
     };
-
+  
+    // Now, you can proceed with adding the data to Firestore
     this.firestore
       .collection('feedback')
-      .add(formData)
+      .add({
+        stringData,
+        numericData,
+      })
       .then(() => {
         // Data added successfully
         console.log('Form data added to Firestore!');
@@ -142,6 +166,7 @@ export class ScoreCapturePage implements OnInit {
         console.error('Error adding form data to Firestore:', error);
       });
   }
+  
 
   Clear() {
     this.introduction = 0;
